@@ -1,0 +1,20 @@
+Description:
+    Checks if Secrets Manager key rotation enabled
+    This check will FAIL if key rotation is disabled
+
+Scenarios:
+ Scenario 1:
+      Given: There are no SecretsManager secrets in the Account
+       Then: PASS
+
+ Scenario 2:
+      Given: There are SecretsManager secrets in the Account
+        And: For each secret check
+        And: Key rotation is enabled
+       Then: PASS for that secret 
+
+ Scenario 3:
+      Given: There are SecretsManager secrets in the Account
+        And: For each secret check
+        And: Key rotation is disabled
+       Then: FAIL for that secret
